@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Navbar :brandName="brandName" :menuItems="menuItems" />
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Navbar from "./components/Navbar.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Navbar,
+  },
+  data() {
+    return {
+      brandName: "Exchange App",
+      menuItems: [
+        { text: "Home", link: "/" },
+        { text: "About", link: "/about" },
+        { text: "FAQ", link: "/faq" },
+      ],
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "assets/styles/variables.scss";
+@import "~bulma/bulma.sass"; // ~있는 것은 node_modules에 있는 package를 참조한다는 뜻임
+@import "assets/styles/main.scss";
 </style>
